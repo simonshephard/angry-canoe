@@ -17,6 +17,7 @@ module.exports = function (app) {
 
   app.route('/api/convert')
     .get(function (req, res){
+    
       var input = req.query.input;
       var initNum = convertHandler.getNum(input);
       var initUnit = convertHandler.getUnit(input);
@@ -25,8 +26,13 @@ module.exports = function (app) {
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       
       res.json({
-        
-      )};
+        initNum: initNum,
+        initUnit: initUnit,
+        returnNum: returnNum,
+        returnUnit: returnUnit,
+        string: toString
+      });
+    
     });
     
 };
