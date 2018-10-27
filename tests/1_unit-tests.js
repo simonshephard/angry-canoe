@@ -48,7 +48,7 @@ suite('Unit Tests', function(){
     
     test('No Numerical Input', function(done) {
       var input = 'mi';
-      assert.equal(convertHandler.getNum(input), );
+      assert.equal(convertHandler.getNum(input), 1);
       done();
     }); 
     
@@ -59,14 +59,15 @@ suite('Unit Tests', function(){
     test('For Each Valid Unit Inputs', function(done) {
       var input = ['gal','l','mi','km','lbs','kg','GAL','L','MI','KM','LBS','KG'];
       input.forEach(function(ele) {
-        //assert
+        assert.equal(convertHandler.getUnit("10"+ele), ele.toLowerCase());
       });
       done();
     });
     
     test('Unknown Unit Input', function(done) {
-      
-      //done();
+      var input = '10unk';
+      assert.equal(convertHandler.getUnit(input), "Invalid unit");
+      done();
     });  
     
   });
