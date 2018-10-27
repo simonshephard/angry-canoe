@@ -25,6 +25,14 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     var result;
+    var units = ['gal','l','mi','km','lbs','kg'];
+    var returnUnits = ['l','gal','km','mi','kg','lbs'];
+    var index = units.indexOf(initUnit);
+    if (index === -1) {
+      result = 'invalid unit';
+    } else {
+      result = returnUnits[index];
+    }
     if (initUnit === "gal") {result = "l";}
     if (initUnit === "lbs") {result = "kg";}
     if (initUnit === "mi") {result = "km";}
@@ -38,15 +46,12 @@ function ConvertHandler() {
   this.spellOutUnit = function(unit) {
     var result;
     var shortUnit = ['gal','l','mi','km','lbs','kg'];
-    var longUnit = ['l','gal','km','mi','kg','lbs'];
-    shortUnit.find(
-
-    if (unit === "gal") {result = "gallons";}
-    if (unit === "lbs") {result = "pounds";}
-    if (unit === "mi") {result = "miles";}
-    if (unit === "l") {result = "litres";}
-    if (unit === "kg") {result = "kilograms";}
-    if (unit === "km") {result = "kilometres";}
+    var longUnit = ['gallons','litres','miles','kilometres','pounds','kilograms'];
+    if (unit === 'invalid unit') {
+      result = 'invalid unit';
+    } else {
+      result = longUnit[shortUnit.indexOf(unit)];
+    }
     return result;
   };
   
