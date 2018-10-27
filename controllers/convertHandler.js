@@ -11,7 +11,12 @@ function ConvertHandler() {
   this.getNum = function(input) {
     var result;
     result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[1];
-    if (result === "") {result = "1";}
+    if (result.match(/^[0-9.]*[/][0-9.]*[/][0-9.]*$/)) {result = 'invalid number';}
+    if (result === "") {
+      result = 1;
+    } else {
+      result = Number(result);
+    }
     return result;
   };
   
