@@ -22,20 +22,20 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     var result;
-    if (initUnit = "gal") {result = "L";}
-    if (initUnit = "lbs") {result = "kg";}
-    if (initUnit = "mi") {result = "km";}
+    if (initUnit === "gal") {result = "L";}
+    if (initUnit === "lbs") {result = "kg";}
+    if (initUnit === "mi") {result = "km";}
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
-    if (unit = "gal") {result = "gallons";}
-    if (unit = "lbs") {result = "pounds";}
-    if (unit = "mi") {result = "miles";}
-    if (unit = "L") {result = "litres";}
-    if (unit = "kg") {result = "kilograms";}
-    if (unit = "km") {result = "kilometres";}
+    if (unit === "gal") {result = "gallons";}
+    if (unit === "lbs") {result = "pounds";}
+    if (unit === "mi") {result = "miles";}
+    if (unit === "L") {result = "litres";}
+    if (unit === "kg") {result = "kilograms";}
+    if (unit === "km") {result = "kilometres";}
     return result;
   };
   
@@ -44,9 +44,9 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
-    if (initNum = "gal") {result = initNum * galToL;}
-    if (initNum = "lbs") {result = initNum * lbsToKg;}
-    if (initNum = "mi") {result = initNum * miToKm;}
+    if (initUnit === "gal") {result = initNum * galToL;}
+    if (initUnit === "lbs") {result = initNum * lbsToKg;}
+    if (initUnit === "mi") {result = initNum * miToKm;}
     return result;
   };
   
