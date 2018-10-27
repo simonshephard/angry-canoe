@@ -11,12 +11,14 @@ function ConvertHandler() {
   this.getNum = function(input) {
     var result;
     result = eval(input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[1]);
+    //******Invalid
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
     result = input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
+    //******Invalid
     return result;
   };
   
@@ -47,6 +49,9 @@ function ConvertHandler() {
     if (initUnit === "gal") {result = initNum * galToL;}
     if (initUnit === "lbs") {result = initNum * lbsToKg;}
     if (initUnit === "mi") {result = initNum * miToKm;}
+    if (initUnit === "l") {result = initNum / galToL;}
+    if (initUnit === "kg") {result = initNum / lbsToKg;}
+    if (initUnit === "km") {result = initNum / miToKm;}
     return result;
   };
   
