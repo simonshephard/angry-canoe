@@ -16,7 +16,7 @@ function ConvertHandler() {
     } else if (result === "") {
       result = 1;
     } else {
-      result = eval(result);
+      result = Number.parseFloat(eval(result));
     }
     return result;
   };
@@ -73,7 +73,7 @@ function ConvertHandler() {
       result = 'invalid number';
     } else {
       var index = initUnits.indexOf(initUnit);
-      result = Number.parseFloat(initNum * convertFactors[index]).toFixed(5);
+      result = Number.parseFloat((initNum * convertFactors[index]).toFixed(5));
     }
     return result;
   };
