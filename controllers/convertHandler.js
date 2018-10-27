@@ -23,14 +23,19 @@ function ConvertHandler() {
   this.getReturnUnit = function(initUnit) {
     var result;
     if (initUnit = "gal") {result = "L";}
-    if (initUnit = "lbs") {result = "Kg";}
-    if (initUnit = "mi") {result = "Km";}
+    if (initUnit = "lbs") {result = "kg";}
+    if (initUnit = "mi") {result = "km";}
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
-    
+    if (unit = "gal") {result = "gallons";}
+    if (unit = "lbs") {result = "pounds";}
+    if (unit = "mi") {result = "miles";}
+    if (unit = "L") {result = "litres";}
+    if (unit = "kg") {result = "kilograms";}
+    if (unit = "km") {result = "kilometres";}
     return result;
   };
   
@@ -47,7 +52,7 @@ function ConvertHandler() {
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
-    result = `${initNum} ${initUnit} converts to ${returnNum} ${returnUnit}`;
+    result = `${initNum} ${this.spellOutUnit(initUnit)} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
     return result;
   };
   
