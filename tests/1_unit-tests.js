@@ -42,7 +42,7 @@ suite('Unit Tests', function(){
     
     test('Invalid Input (double fraction)', function(done) {
       var input = '10/4/4mi';
-      assert.equal(convertHandler.getNum(input), "Invalid number");
+      assert.equal(convertHandler.getNum(input), "invalid number");
       done();
     });
     
@@ -65,8 +65,8 @@ suite('Unit Tests', function(){
     });
     
     test('Unknown Unit Input', function(done) {
-      var input = '10unk';
-      assert.equal(convertHandler.getUnit(input), "Invalid unit");
+      var input = '10unkn';
+      assert.equal(convertHandler.getUnit(input), "invalid unit");
       done();
     });  
     
