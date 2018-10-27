@@ -10,19 +10,19 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    result = input.match(/^([0-9.]+)\s*([a-z]+)$/)[1];
+    result = input.match(/^([0-9.]+)\s*([a-zA-Z]+)$/)[1];
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
-    result = input.match(/^([0-9.]+)\s*([a-z]+)$/)[2];    
+    result = input.match(/^([0-9.]+)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
     var result;
-    if (initUnit === "gal") {result = "L";}
+    if (initUnit === "gal") {result = "l";}
     if (initUnit === "lbs") {result = "kg";}
     if (initUnit === "mi") {result = "km";}
     return result;
@@ -33,7 +33,7 @@ function ConvertHandler() {
     if (unit === "gal") {result = "gallons";}
     if (unit === "lbs") {result = "pounds";}
     if (unit === "mi") {result = "miles";}
-    if (unit === "L") {result = "litres";}
+    if (unit === "l") {result = "litres";}
     if (unit === "kg") {result = "kilograms";}
     if (unit === "km") {result = "kilometres";}
     return result;
