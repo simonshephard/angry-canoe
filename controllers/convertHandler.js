@@ -22,7 +22,9 @@ function ConvertHandler() {
   
   this.getReturnUnit = function(initUnit) {
     var result;
-    
+    if (initUnit = "gal") {result = "L";}
+    if (initUnit = "lbs") {result = "Kg";}
+    if (initUnit = "mi") {result = "Km";}
     return result;
   };
 
@@ -37,13 +39,15 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
-    
+    if (initNum = "gal") {result = initNum * galToL;}
+    if (initNum = "lbs") {result = initNum * lbsToKg;}
+    if (initNum = "mi") {result = initNum * miToKm;}
     return result;
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
-    
+    result = initNum + initUnit + " is " + returnNum + returnUnit;
     return result;
   };
   
