@@ -10,14 +10,15 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    result = eval(input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[1]);
+    result = eval(input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[1]);
+    if (result === null) {result = 1;}
     //******Invalid
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
-    result = input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
+    result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
     //******Invalid
     return result;
   };
@@ -27,6 +28,9 @@ function ConvertHandler() {
     if (initUnit === "gal") {result = "l";}
     if (initUnit === "lbs") {result = "kg";}
     if (initUnit === "mi") {result = "km";}
+    if (initUnit === "l") {result = "gal";}
+    if (initUnit === "kg") {result = "lbs";}
+    if (initUnit === "km") {result = "mi";}
     return result;
   };
 
