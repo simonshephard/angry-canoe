@@ -60,8 +60,12 @@ function ConvertHandler() {
     var initUnits = ['gal','l','mi','km','lbs','kg'];
     var convertFactors = [galToL, 1/galToL, miToKm, 1/miToKm, lbsToKg, 1/lbsToKg];
     var index = initUnits.indexOf(initUnit);
-    if (index === -1) {
+    if (initNum === 'invalid unit' && initNum === 'invalid number') {
+      result = 'invalid unit and number';
+    } else if (initNum === 'invalid unit') {
       result = 'invalid unit';
+    } else if (initNum === 'invalid number') {
+      result = 'invalid number';
     } else {
       result = (initNum * convertFactors[index]).toFixed(5);
     }

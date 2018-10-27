@@ -80,7 +80,7 @@ suite('Functional Tests', function() {
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, '1');
           assert.equal(res.body.initUnit, 'kg');
-          assert.approximately(res.body.returnNum, '2.20462', 0.1);
+          assert.approximately(res.body.returnNum, 2.20462, 0.1);
           assert.equal(res.body.returnUnit, 'lbs');
           done();
         });
