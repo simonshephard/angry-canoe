@@ -12,45 +12,42 @@ function ConvertHandler() {
     var result;
     result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[1];
     if (result === "") {result = 1;}
-    //******Invalid??
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
     result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[2].toLowerCase();
-    var units = ['gal','l','mi','km','lbs','kg']
+    var initUnits = ['gal','l','mi','km','lbs','kg'];
+    var index = initUnits.indexOf(result);
+    if (index === -1) {
+      result = 'invalid unit';
+    }
     return result;
   };
   
   this.getReturnUnit = function(initUnit) {
     var result;
-    var units = ['gal','l','mi','km','lbs','kg'];
+    var initUnits = ['gal','l','mi','km','lbs','kg'];
     var returnUnits = ['l','gal','km','mi','kg','lbs'];
-    var index = units.indexOf(initUnit);
+    var index = initUnits.indexOf(initUnit);
     if (index === -1) {
       result = 'invalid unit';
     } else {
       result = returnUnits[index];
     }
-    if (initUnit === "gal") {result = "l";}
-    if (initUnit === "lbs") {result = "kg";}
-    if (initUnit === "mi") {result = "km";}
-    if (initUnit === "l") {result = "gal";}
-    if (initUnit === "kg") {result = "lbs";}
-    if (initUnit === "km") {result = "mi";}
-    if (!units.includes(result)) {result = 'invalid unit';}
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
-    var shortUnit = ['gal','l','mi','km','lbs','kg'];
-    var longUnit = ['gallons','litres','miles','kilometres','pounds','kilograms'];
-    if (unit === 'invalid unit') {
+    var shortUnits = ['gal','l','mi','km','lbs','kg'];
+    var longUnits = ['gallons','litres','miles','kilometres','pounds','kilograms'];
+    var index = shortUnits.indexOf(unit);
+    if (index === -1) {
       result = 'invalid unit';
     } else {
-      result = longUnit[shortUnit.indexOf(unit)];
+      result = longUnits[index];
     }
     return result;
   };
@@ -60,6 +57,9 @@ function ConvertHandler() {
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
     var result;
+    var units = ['gal','l','mi','km','lbs','kg'];
+    var convertFactor = [,'litres','miles','kilometres','pounds','kilograms'];
+
     if (initUnit === "gal") {result = initNum * galToL;}
     if (initUnit === "lbs") {result = initNum * lbsToKg;}
     if (initUnit === "mi") {result = initNum * miToKm;}
