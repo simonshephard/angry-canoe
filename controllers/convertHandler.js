@@ -10,13 +10,13 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
-    result = input.match(/^([0-9.]+)\s*([a-zA-Z]+)$/)[1];
+    result = input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[1];
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
-    result = input.match(/^([0-9.]+)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
+    result = input.match(/^([0-9./]+)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
     return result;
   };
   
