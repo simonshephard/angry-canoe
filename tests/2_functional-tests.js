@@ -50,13 +50,13 @@ suite('Functional Tests', function() {
       test('Convert 3/7.2/4kg (invalid number)', function(done) {
        chai.request(server)
         .get('/api/convert')
-        .query({input: '32g'})
+        .query({input: '3/7.2/4kg'})
         .end(function(err, res){
           assert.equal(res.status, 200);
           assert.equal(res.body.initNum, 'invalid number');
           assert.equal(res.body.initUnit, 'kg');
           assert.equal(res.body.returnNum, 'invalid number');
-          assert.equal(res.body.returnUnit, 'invalid number');
+          assert.equal(res.body.returnUnit, 'lbs');
           done();
         });
       });  
@@ -64,10 +64,10 @@ suite('Functional Tests', function() {
       test('Convert 3/7.2/4kilomegagram (invalid number and unit)', function(done) {
        chai.request(server)
         .get('/api/convert')
-        .query({input: '32g'})
+        .query({input: '3/7.2/4kilomegagram'})
         .end(function(err, res){
           assert.equal(res.status, 200);
-          assert.equal(res.body.result, 'invalid number and unit');
+          assert.equal(res.body.returnNum, 'invalid number and unit');
           done();
         });
       });

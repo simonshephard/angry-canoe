@@ -11,11 +11,12 @@ function ConvertHandler() {
   this.getNum = function(input) {
     var result;
     result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[1];
-    if (result.match(/^[0-9.]*[/][0-9.]*[/][0-9.]*$/)) {result = 'invalid number';}
-    if (result === "") {
+    if (result.match(/^[0-9.]*[/][0-9.]*[/][0-9.]*$/)) {
+      result = 'invalid number';
+    } else if (result === "") {
       result = 1;
     } else {
-      result = Number(result);
+      result = eval(result);
     }
     return result;
   };
@@ -63,16 +64,16 @@ function ConvertHandler() {
     const miToKm = 1.60934;
     var result;
     var initUnits = ['gal','l','mi','km','lbs','kg'];
-    var convertFactors = [galToL, 1/galToL, miToKm, 1/miToKm, lbsToKg, 1/lbsToKg];
-    var index = initUnits.indexOf(initUnit);
-    if (initNum === 'invalid unit' && initNum === 'invalid number') {
-      result = 'invalid unit and number';
-    } else if (initNum === 'invalid unit') {
+    var convertFactors = [galToL, 1.0/galToL, miToKm, 1.0/miToKm, lbsToKg, 1.0/lbsToKg];
+    if (initNum === 'invalid number' && initUnit === 'invalid unit') {
+      result = 'invalid number and unit';
+    } else if (initUnit === 'invalid unit') {
       result = 'invalid unit';
     } else if (initNum === 'invalid number') {
       result = 'invalid number';
     } else {
-      result = (initNum * convertFactors[index]).toFixed(5);
+      var index = initUnits.indexOf(initUnit);
+      result = Number.parseFloat(initNum * convertFactors[index]).toFixed(5);
     }
     return result;
   };
