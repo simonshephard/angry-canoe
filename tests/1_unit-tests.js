@@ -35,19 +35,21 @@ suite('Unit Tests', function(){
     });
     
     test('Fractional Input w/ Decimal', function(done) {
-      var input = '10/4mi';
-      assert.equal(convertHandler.getNum(input), 2.5);
+      var input = '10.4/4mi';
+      assert.equal(convertHandler.getNum(input), 2.6);
       done();
     });
     
     test('Invalid Input (double fraction)', function(done) {
-      
-      //done();
+      var input = '10/4/4mi';
+      assert.equal(convertHandler.getNum(input), "Invalid number");
+      done();
     });
     
     test('No Numerical Input', function(done) {
-      
-      //done();
+      var input = 'mi';
+      assert.equal(convertHandler.getNum(input), );
+      done();
     }); 
     
   });
