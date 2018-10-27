@@ -20,7 +20,6 @@ function ConvertHandler() {
     var result;
     result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[2].toLowerCase();
     var units = ['gal','l','mi','km','lbs','kg']
-    if (!units.includes(result)) {result = 'invalid unit'}
     return result;
   };
   
@@ -32,11 +31,16 @@ function ConvertHandler() {
     if (initUnit === "l") {result = "gal";}
     if (initUnit === "kg") {result = "lbs";}
     if (initUnit === "km") {result = "mi";}
+    if (!units.includes(result)) {result = 'invalid unit';}
     return result;
   };
 
   this.spellOutUnit = function(unit) {
     var result;
+    var shortUnit = ['gal','l','mi','km','lbs','kg'];
+    var longUnit = ['l','gal','km','mi','kg','lbs'];
+    shortUnit.find(
+
     if (unit === "gal") {result = "gallons";}
     if (unit === "lbs") {result = "pounds";}
     if (unit === "mi") {result = "miles";}
