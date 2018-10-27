@@ -11,15 +11,16 @@ function ConvertHandler() {
   this.getNum = function(input) {
     var result;
     result = eval(input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[1]);
-    if (result === null) {result = 1;}
-    //******Invalid
+    if (result === undefined) {result = 1;}
+    //******Invalid??
     return result;
   };
   
   this.getUnit = function(input) {
     var result;
-    result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[2].toLowerCase();    
-    //******Invalid
+    result = input.match(/^([0-9./]*)\s*([a-zA-Z]+)$/)[2].toLowerCase();
+    var units = ['gal','l','mi','km','lbs','kg']
+    if (!units.includes(result)) {result = 'invalid unit'}
     return result;
   };
   
